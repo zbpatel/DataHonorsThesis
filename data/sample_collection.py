@@ -193,11 +193,21 @@ def generate_dummy_data(samples, classes=2, h=28, w=28, c=1):
 
 
 # configuring parameter ranges to test
-batch_size_range = range()
+
+# batch size ranges are all powers of 2 from 2 to 256 and one above / below each point
+# also included are 320 +- 1 since there are 320 TensorCores on the Turing T4
+powers_of_2 = np.power(2, np.arange(1, 8))
+batch_size_range = np.concatenate((powers_of_2, powers_of_2 - 1, powers_of_2 + 1, np.array([319, 320, 321])))
+print("Batch sizes: ", batch_size_range)
 
 stride_range = range(1, 4)
+print("Stride sizes: ", stride_range)
+
 filter_count_range = range(1, 11)
+print("Filter count range: ", filter_count_range)
+
 filter_size_range = range(1, 5, 2)
+print("Filter sizes: ", filter_sizes)
 
 
 # In[ ]:
