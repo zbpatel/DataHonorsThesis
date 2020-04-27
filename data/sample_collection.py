@@ -198,6 +198,7 @@ def generate_dummy_data(samples, classes=2, h=28, w=28, c=1):
 # also included are 320 +- 1 since there are 320 TensorCores on the Turing T4
 powers_of_2 = np.power(2, np.arange(1, 8))
 batch_size_range = np.concatenate((powers_of_2, powers_of_2 - 1, powers_of_2 + 1, np.array([319, 320, 321])))
+batch_size_range = np.sort(batch_size_range)
 print("Batch sizes: ", batch_size_range)
 
 stride_range = range(1, 4)
@@ -207,13 +208,17 @@ filter_count_range = range(1, 11)
 print("Filter count range: ", filter_count_range)
 
 kernel_size_range = range(1, 5, 2)
-print("Kernel sizes: ", kernel_sizes)
+print("Kernel sizes: ", kernel_size_range)
 
 
 # In[ ]:
 
 
+print("Beginning Testing")
+bs_count = 0
 for batch_size in batch_size_range:
+    bs_count += 1
+    print("Testing batch size %d of %d" %(bs_count, batch_size_range.shape[0]))
     for stride_size in stride_range:
         for kernel_size in kernel_size_range:
             for filter_count in filter_count_range:
