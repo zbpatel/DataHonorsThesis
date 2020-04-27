@@ -80,7 +80,7 @@ log_base_dir = "tboard_logs/"
 
 
 def construct_model(input_shape=(28, 28, 1), filters=1, kernel_size=[3, 3], strides=[1,1], padding="same", 
-                    classes=1):
+                    output_shape=1):
     """
     Constructs a simple network with specified parameters. 
     
@@ -109,7 +109,8 @@ def construct_model(input_shape=(28, 28, 1), filters=1, kernel_size=[3, 3], stri
             strides = strides,
             padding = padding
         ), 
-        tf.keras.layers.Dense(classes, activation="sigmoid")
+        tf.keras.layers.Flatten(),
+        tf.keras.layers.Dense(output_shape, activation="sigmoid")
     ])
 
     return model
@@ -127,7 +128,7 @@ def compile_model(model):
     
     # compiling the model
     model.compile(
-        loss = "mean_squared_error",
+        loss = "binary_crossentropy",
         optimizer = "sgd",
         metrics = ["accuracy"]
     )
