@@ -198,7 +198,8 @@ def generate_dummy_data(samples, classes=2, h=28, w=28, c=1):
 # also included are 320 +- 1 since there are 320 TensorCores on the Turing T4
 powers_of_2 = np.power(2, np.arange(1, 8))
 batch_size_range = np.concatenate((powers_of_2, powers_of_2 - 1, powers_of_2 + 1, np.array([319, 320, 321])))
-batch_size_range = np.sort(batch_size_range)
+# unique - removes duplicates, sort - makes the print statement nicer ;)
+batch_size_range = np.sort(np.unique(batch_size_range))
 print("Batch sizes: ", batch_size_range)
 
 stride_range = range(1, 4)
