@@ -35,17 +35,17 @@
 # In[ ]:
 
 
-get_ipython().system('pip uninstall -y -q tensorflow tensorboard')
-get_ipython().system('pip uninstall -y -q tensorflow tensorboard')
-get_ipython().system('pip install -U -q tf-nightly tb-nightly tensorboard_plugin_profile')
+#!pip uninstall -y -q tensorflow tensorboard
+#!pip uninstall -y -q tensorflow tensorboard
+#!pip install -U -q tf-nightly tb-nightly tensorboard_plugin_profile
 
 
 # In[ ]:
 
 
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+#from __future__ import absolute_import
+#from __future__ import division
+#from __future__ import print_function
 
 from datetime import datetime
 from packaging import version
