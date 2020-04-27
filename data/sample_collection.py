@@ -206,8 +206,8 @@ print("Stride sizes: ", stride_range)
 filter_count_range = range(1, 11)
 print("Filter count range: ", filter_count_range)
 
-filter_size_range = range(1, 5, 2)
-print("Filter sizes: ", filter_sizes)
+kernel_size_range = range(1, 5, 2)
+print("Kernel sizes: ", kernel_sizes)
 
 
 # In[ ]:
@@ -215,13 +215,13 @@ print("Filter sizes: ", filter_sizes)
 
 for batch_size in batch_size_range:
     for stride_size in stride_range:
-        for filter_size in filter_size_range:
+        for kernel_size in kernel_size_range:
             for filter_count in filter_count_range:
                 # constructing and compiling the model to sample
                 model = construct_model(
                     filters=filter_count, 
                     strides=[stride_size, stride_size], 
-                    filter_size=[filter_size, filter_size]
+                    kernel_size=[kernel_size, kernel_size]
                 )
                 
                 compile_model(model)
@@ -231,8 +231,8 @@ for batch_size in batch_size_range:
             
             
                 # Label format:
-                # timestamp-b(batch_size)s(stride_size)f(filter_size)c(filter_count)
-                log_loc =  log_base_dir + datetime.now().strftime("%Y%m%d-%H%M") + "-b%ds%df%dc%d" %(batch_size, stride_size, filter_size, filter_count)
+                # timestamp-b(batch_size)s(stride_size)k(kernel_size)f(filter_count)
+                log_loc =  log_base_dir + datetime.now().strftime("%Y%m%d-%H%M") + "-b%ds%dk%df%d" %(batch_size, stride_size, kernel_size, filter_count)
                 tboard_callback = configure_tboard_callback(log_loc)
 
                 
