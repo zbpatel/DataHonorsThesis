@@ -204,13 +204,13 @@ batch_size_range = np.sort(np.unique(batch_size_range))
 print("Batch sizes: ", batch_size_range)
 
 stride_range = range(1, 4)
-print("Stride sizes: ", stride_range)
+print("Stride sizes: ", list(stride_range))
 
 filter_count_range = range(1, 11)
-print("Filter count range: ", filter_count_range)
+print("Filter count range: ", list(filter_count_range))
 
 kernel_size_range = range(1, 5, 2)
-print("Kernel sizes: ", kernel_size_range)
+print("Kernel sizes: ", list(kernel_size_range))
 
 
 # In[ ]:
